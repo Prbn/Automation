@@ -855,3 +855,38 @@ End Sub
 ```
 
 
+# Sheet
+
+```VBA
+
+Private Sub Worksheet_FollowHyperlink(ByVal Target As Hyperlink)
+    
+    Dim RowNum, ColumnNum, SN As Integer
+    
+    RowNum = Target.Range.Row
+    ColumnNum = Target.Range.Column
+    SN = RowNum - 8
+    
+    'MsgBox RowNum & " " & ColumnNum & " " & SN
+    'Exit Sub
+    
+    If RowNum >= 9 And RowNum <= 108 And ColumnNum >= 8 And ColumnNum <= 10 Then
+        If ColumnNum = 9 Then
+            Run_Update (SN)
+            Exit Sub
+        End If
+        If ColumnNum = 8 Then
+            Run_Clear (SN)
+            Exit Sub
+        End If
+        If ColumnNum = 10 Then
+            Go_To_Range (SN)
+            Exit Sub
+        End If
+    End If
+    
+End Sub
+
+
+```
+
